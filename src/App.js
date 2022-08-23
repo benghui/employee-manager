@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
-import List from './routes/List'
+import List from './components/List'
 
 function App() {
   return (
