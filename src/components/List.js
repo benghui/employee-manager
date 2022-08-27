@@ -1,20 +1,27 @@
+import { Button, Grid } from "@mui/material";
+
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
+import { useNavigate } from "react-router-dom";
+
 import { useGetListsQuery } from "../services/listApi";
+import { ButtonCellRenderer } from './ButtonCellRenderer';
 
 
 const List = () => {
+	let navigate = useNavigate();
 
 	const { data, error, isLoading, isSuccess } = useGetListsQuery();
 
 	const columnDefs = [
-		{ headerName: "First Name", field: "firstName" },
+		{ headerName: "First Name", field: "firstName", },
 		{ headerName: "Last Name", field: "lastName", },
 		{ headerName: "Email Address", field: "email", },
-		{ headerName: "Phone Number", field: "number" },
-		{ headerName: "Gender", field: "gender" },
+		{ headerName: "Phone Number", field: "number", },
+		{ headerName: "Gender", field: "gender", },
+		{ maxWidth: 200, cellRenderer: ButtonCellRenderer, pinned: "right" }
 	]
 
 	const onGridReady = (params) => {
@@ -26,12 +33,21 @@ const List = () => {
 		editable: true,
 		flex: 1,
 		filter: true,
-		// floatingFilter: true
+	}
+
+	const gridOptions = {
+		domLayout: 'autoHeight',
+	}
+
+	const addEmployeeHandler = () => {
+		navigate("/employee/add");
 	}
 
 	return (
 		<div>
-			<header>The Employee List Page</header>
+			<Grid align="right">
+				<Button onClick={addEmployeeHandler}>Add Employee</Button>
+			</Grid>
 			<div>
 				{error && <p>An error occurred</p>}
 				{isLoading && <p>Loading...</p>}
@@ -41,6 +57,7 @@ const List = () => {
 					<AgGridReact
 						columnDefs={columnDefs}
 						defaultColDef={defaultColDef}
+						gridOptions={gridOptions}
 						onGridReady={onGridReady}>
 					</AgGridReact>
 				)}
