@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
-import List from './components/List';
+import Employee from './components/Employee';
 import Add from './components/Add';
 import Edit from './components/Edit';
 
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="employee">
-          <Route path="list" element={<List />} />
+          <Route path="list" element={<Employee />} />
           <Route path="add" element={<Add />} />
           <Route path="edit" element={<Edit />} />
         </Route>

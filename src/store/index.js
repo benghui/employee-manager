@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { listApi } from '../services/listApi';
-import listReducer from '../reducers/listReducer';
+import { listApi } from '../services/employeeApi';
 
 export const store = configureStore({
   reducer: {
-    [listApi.reducerPath]: listApi.reducer,
-    list: listReducer,
+    [employeeApi.reducerPath]: employeeApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(listApi.middleware)
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(employeeApi.middleware)
 });

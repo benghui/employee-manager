@@ -6,11 +6,10 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 import { useNavigate } from "react-router-dom";
 
-import { useGetListsQuery } from "../services/listApi";
+import { useGetListsQuery } from "../services/employeeApi";
 import { ButtonCellRenderer } from './ButtonCellRenderer';
 
-
-const List = () => {
+const Employee = () => {
 	let navigate = useNavigate();
 
 	const { data, error, isLoading, isSuccess } = useGetListsQuery();
@@ -66,4 +65,4 @@ const List = () => {
 	);
 };
 
-export default List;
+export default Employee;
