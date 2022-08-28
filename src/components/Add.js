@@ -14,7 +14,6 @@ const Add = () => {
 
 	const onSubmit = async values => {
 		try {
-			console.log("values before", values)
 			await addNew(values).unwrap()
 			navigate("/employee/list");
 		} catch (err) {

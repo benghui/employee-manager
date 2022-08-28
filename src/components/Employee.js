@@ -6,13 +6,13 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 import { useNavigate } from "react-router-dom";
 
-import { useGetListsQuery } from "../services/employeeApi";
+import { useGetEmployeesQuery } from "../services/employeeApi";
 import { ButtonCellRenderer } from './ButtonCellRenderer';
 
 const Employee = () => {
 	let navigate = useNavigate();
 
-	const { data, error, isLoading, isSuccess } = useGetListsQuery();
+	const { data, error, isLoading, isSuccess } = useGetEmployeesQuery();
 
 	const columnDefs = [
 		{ headerName: "First Name", field: "firstName", },
